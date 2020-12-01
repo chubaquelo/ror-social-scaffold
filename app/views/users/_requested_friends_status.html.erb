@@ -1,6 +1,8 @@
 <h2>Sent Requests</h2>
 <% @pending_requests.each do |user| %>
 <li class="my-4">
-  Name: <%= user.name %>
+  <% if !current_user.friend?(user) %>
+    Name: <%= user.name %>
+  <% end %>
 </li>
 <% end %>
