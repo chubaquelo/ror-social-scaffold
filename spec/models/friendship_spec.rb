@@ -4,7 +4,7 @@ RSpec.describe Friendship, type: :model do
   describe 'Create a like' do
     let(:testuser) { User.create(name: 'Carlos', email: 'carlos@microverse.org', password: '123456789') }
     let(:testuser2) { User.create(name: 'Ricardo', email: 'ricardo@microverse.org', password: '987654321') }
-    subject {Friendship.create(user_id: testuser.id, friend_id: testuser2.id, confirmed: true)}
+    subject { Friendship.create(user_id: testuser.id, friend_id: testuser2.id, confirmed: true) }
 
     it 'change the count of friendship by one' do
       expect { subject }.to change { Friendship.count }.by(1)

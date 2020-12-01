@@ -4,7 +4,7 @@ RSpec.describe Comment, type: :model do
   describe 'Create a comment' do
     let(:testuser) { User.create(name: 'Carlos', email: 'carlos@microverse.org', password: '123456789') }
     let(:testpost) { Post.create(user_id: testuser.id, content: 'Post content') }
-    subject {Comment.create(user_id: testuser.id, post_id: testpost.id, content: 'comment content')}
+    subject { Comment.create(user_id: testuser.id, post_id: testpost.id, content: 'comment content') }
 
     it 'change the count of comments by one' do
       expect { subject }.to change { Comment.count }.by(1)

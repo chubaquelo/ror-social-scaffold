@@ -17,9 +17,8 @@ RSpec.describe User, type: :model do
       expect(subject.name.length).to be < 20
     end
   end
-  
-  describe 'User associations' do
 
+  describe 'User associations' do
     it 'have many posts' do
       user = User.reflect_on_association(:posts)
       expect(user.macro).to eq(:has_many)

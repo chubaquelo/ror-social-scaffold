@@ -12,5 +12,4 @@ RSpec.describe 'post creation', type: :feature do
     click_on 'Save'
     expect(page).to have_content('This is a new post for testing.')
   end
-
 end

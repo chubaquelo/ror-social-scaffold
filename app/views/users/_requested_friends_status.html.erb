@@ -2,7 +2,7 @@
 <% @pending_requests.each do |user| %>
 <li class="my-4">
   <% if !current_user.friend?(user) %>
-    Name: <%= user.name %>
+    Waiting friend confirmation from <%= user.name %>
   <% end %>
 </li>
 <% end %>

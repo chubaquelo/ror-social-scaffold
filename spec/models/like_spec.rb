@@ -4,7 +4,7 @@ RSpec.describe Like, type: :model do
   describe 'Create a like' do
     let(:testuser) { User.create(name: 'Carlos', email: 'carlos@microverse.org', password: '123456789') }
     let(:testpost) { Post.create(user_id: testuser.id, content: 'Post content') }
-    subject {Like.create(user_id: testuser.id, post_id: testpost.id)}
+    subject { Like.create(user_id: testuser.id, post_id: testpost.id) }
 
     it 'change the count of like by one' do
       expect { subject }.to change { Like.count }.by(1)

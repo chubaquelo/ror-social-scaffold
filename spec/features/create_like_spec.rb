@@ -15,5 +15,4 @@ RSpec.describe 'Give a like', type: :feature do
     click_on 'Dislike!'
     expect(page).to have_content('Like!')
   end
-
 end

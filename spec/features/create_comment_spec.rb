@@ -14,5 +14,4 @@ RSpec.describe 'comment creation', type: :feature do
     click_on 'Comment'
     expect(page).to have_content('Johnny Bravo: This is a new comment for testing.')
   end
-
 end

@@ -2,7 +2,7 @@
 <% @friend_requests.each do |user| %>
 <li class="my-4">
   <% if !current_user.friend?(user) %>
-    Name: <%= user.name %>
+    <%= user.name %> want to be your friend.
     <%= link_to 'Accept', user_friendship_path(@friend_requests, user), method: :put %>
   <% end %>
 </li>
