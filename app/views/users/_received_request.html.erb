@@ -1,0 +1,7 @@
+<h2>Received Requests</h2>
+<% @friend_requests.each do |user| %>
+<li class="my-4">
+  Name: <%= user.name %>
+  <%# <%= link_to 'Accept', user_friendship_path(:id => user.id), method: :put %>
+</li>
+<% end %>
