@@ -10,9 +10,19 @@ RSpec.describe User, type: :model do
     it 'return Carlos' do
       expect(subject.name).to eq('Carlos')
     end
+
+    it 'it dont return Pedro' do
+      expect(subject.name).to_not eq('Pedro')
+    end
+
     it 'email have email format' do
       expect(subject.email).to match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/)
     end
+
+    it 'email will not have other format' do
+      expect(subject.email).to_not match( /^[a-z0-9_-]{3,15}$/ )
+    end
+
     it 'username length is less than 20' do
       expect(subject.name.length).to be < 20
     end
