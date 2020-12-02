@@ -10,6 +10,7 @@ RSpec.describe 'post creation', type: :feature do
     click_on 'Log in'
     fill_in 'post_content', with: 'This is a new post for testing.'
     click_on 'Save'
+    expect(page).to_not have_content("Post could not be saved. Content can't be blank")
     expect(page).to have_content('This is a new post for testing.')
   end
 end

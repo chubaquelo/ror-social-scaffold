@@ -9,8 +9,10 @@ RSpec.describe 'session create and delete', type: :feature do
     fill_in 'user_password', with: user.password
     click_on 'Log in'
     expect(page).to have_content('Signed in successfully.')
+    expect(page).to_not have_content('Invalid Email or password.')
     visit user_path(user.id)
     expect(page).to have_content('Johnny Bravo')
+    expect(page).to_not have_content('Dexter')
   end
 
   scenario 'logout' do

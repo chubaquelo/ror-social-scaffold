@@ -11,8 +11,10 @@ RSpec.describe 'Give a like', type: :feature do
     fill_in 'post_content', with: 'This is a new post for testing.'
     click_on 'Save'
     click_on 'Like!'
+    expect(page).to_not have_content('Like!')
     expect(page).to have_content('Dislike!')
     click_on 'Dislike!'
+    expect(page).to_not have_content('Dislike!')
     expect(page).to have_content('Like!')
   end
 end

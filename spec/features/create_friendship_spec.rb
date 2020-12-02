@@ -11,6 +11,7 @@ RSpec.describe 'create friendship', type: :feature do
     click_on 'Log in'
     click_on 'All users'
     click_on 'Add as friend'
+    expect(page).to_not have_content('Add as friend')
     expect(page).to have_content('Waiting friend confirmation from Dexter')
     click_on 'Sign out'
     click_on 'Log in'
@@ -20,6 +21,7 @@ RSpec.describe 'create friendship', type: :feature do
     click_on 'All users'
     expect(page).to have_content('Johnny Bravo want to be your friend.')
     click_on 'Accept'
+    expect(page).to_not have_content('Johnny Bravo want to be your friend.')
     expect(page).to have_content('You are already friends.')
   end
 end

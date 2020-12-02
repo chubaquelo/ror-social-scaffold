@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'email will not have other format' do
-      expect(subject.email).to_not match( /^[a-z0-9_-]{3,15}$/ )
+      expect(subject.email).to_not match(/^[a-z0-9_-]{3,15}$/)
     end
 
     it 'username length is less than 20' do

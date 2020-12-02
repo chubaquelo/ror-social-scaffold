@@ -12,6 +12,7 @@ RSpec.describe 'comment creation', type: :feature do
     click_on 'Save'
     fill_in 'comment_content', with: 'This is a new comment for testing.'
     click_on 'Comment'
+    expect(page).to_not have_content("Content can't be blank")
     expect(page).to have_content('Johnny Bravo: This is a new comment for testing.')
   end
 end

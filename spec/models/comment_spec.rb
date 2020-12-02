@@ -10,6 +10,10 @@ RSpec.describe Comment, type: :model do
       expect { subject }.to change { Comment.count }.by(1)
     end
     it 'comment content should be text' do
+      expect(subject.content).to be_an_instance_of(String)
+    end
+
+    it 'comment content should not be numeric' do
       expect(subject.content).to_not be_an_instance_of(Numeric)
     end
     it 'content length should be less than 200' do

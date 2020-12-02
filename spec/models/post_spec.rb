@@ -11,6 +11,11 @@ RSpec.describe Post, type: :model do
     it 'post content should be text' do
       expect(subject.content).to be_an_instance_of(String)
     end
+
+    it 'post content should not be number' do
+      expect(subject.content).to_not be_an_instance_of(Numeric)
+    end
+
     it 'content length should be less than 1000' do
       expect(subject.content.length).to be < 1000
     end
