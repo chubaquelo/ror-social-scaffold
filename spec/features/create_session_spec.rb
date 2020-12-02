@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Session create and delete', type: :feature do
   let(:user) { User.create(name: 'Johnny Bravo', email: 'johnny@microverse.org', password: '123456789') }
 
-  scenario 'Correct user login' do
+  before(:example) do
     visit new_user_session_path
+  end
+
+  scenario 'Correct user login' do
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_on 'Log in'
@@ -12,7 +15,6 @@ RSpec.describe 'Session create and delete', type: :feature do
   end
 
   scenario 'Incorrect user login' do
-    visit new_user_session_path
     fill_in 'user_email', with: 'someemail@email.com'
     fill_in 'user_password', with: 'password'
     click_on 'Log in'
@@ -20,7 +22,6 @@ RSpec.describe 'Session create and delete', type: :feature do
   end
 
   scenario 'User logout' do
-    visit new_user_session_path
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_on 'Log in'
