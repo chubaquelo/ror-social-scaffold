@@ -33,13 +33,12 @@ class FriendshipsController < ApplicationController
     friend = User.find(params[:user_id])
     friendship = friend.friendships.find_by(friend_id: current_user.id)
 
-    if friendship.destroy
-      flash[:notice] = 'Friendship was rejected.'
-      redirect_back(fallback_location: user_path)
-    else
-      flash[:notice] = 'Some error happened.'
-      redirect_back(fallback_location: user_path)
-    end
+    flash[:notice] = if friendship.destroy
+                       'Friendship was rejected.'
+                     else
+                       'Some error happened.'
+                     end
+    redirect_back(fallback_location: user_path)
   end
 
   private
