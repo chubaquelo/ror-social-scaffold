@@ -29,13 +29,12 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:user_id])
     fsh = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id)
 
-    if current_user.friend_requests.include?(user) && fsh.delete
-      flash[:notice] = 'Friendship was rejected.'
-      redirect_back(fallback_location: user_path)
-    else
-      flash[:notice] = 'Friendship request was not modified.'
-      redirect_back(fallback_location: user_path)
-    end
+    flash[:notice] = if current_user.friend_requests.include?(user) && fsh.delete
+                       'Friendship was rejected.'
+                     else
+                       'Friendship request was not modified.'
+                     end
+    redirect_back(fallback_location: user_path)
   end
 
   private
