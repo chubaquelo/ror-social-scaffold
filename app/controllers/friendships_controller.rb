@@ -20,11 +20,23 @@ class FriendshipsController < ApplicationController
       flash[:notice] = 'Friendship was confirmed correctly.'
       redirect_back(fallback_location: user_path)
     else
+      flash[:notice] = 'Friendship was not modified.'
       render :update
     end
   end
 
-  def destroy; end
+  def destroy
+    user = User.find(params[:user_id])
+    fsh = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id)
+
+    if current_user.friend_requests.include?(user) && fsh.delete
+      flash[:notice] = 'Friendship was rejected.'
+      redirect_back(fallback_location: user_path)
+    else
+      flash[:notice] = 'Friendship request was not modified.'
+      redirect_back(fallback_location: user_path)
+    end
+  end
 
   private
 
