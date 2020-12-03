@@ -43,6 +43,10 @@ class User < ApplicationRecord
   #   f_friendship.save
   # end
 
+  def friends_and_own_post
+    Post.where(user: (self.friends << self))
+  end
+
   def friend?(user)
     friends.include?(user)
   end
