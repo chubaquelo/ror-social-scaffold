@@ -18,8 +18,8 @@ class User < ApplicationRecord
   has_many :pending_friendships, -> { where confirmed: nil }, class_name: "Friendship", foreign_key: 'user_id'
   has_many :pending_friends, through: :pending_friendships, source: :friend
 
-  has_many :inverse_friendships, -> { where confirmed: nil }, class_name: "Friendship", foreign_key: 'friend_id'
-  has_many :friend_requests, through: :inverse_friendships, source: :user
+  has_many :inverted_friendships, -> { where confirmed: nil }, class_name: "Friendship", foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverted_friendships, source: :user
   # def friends
   #   friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
   #   friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
@@ -42,10 +42,6 @@ class User < ApplicationRecord
   #   f_friendship = Friendship.new(user_id: friendship.friend_id, friend_id: friendship.user_id, confirmed: true)
   #   f_friendship.save
   # end
-
-  def friends_and_own_post
-    Post.where(user: (self.friends << self))
-  end
 
   def friend?(user)
     friends.include?(user)

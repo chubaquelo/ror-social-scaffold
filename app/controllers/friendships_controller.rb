@@ -5,11 +5,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(params_friendship)
-    # friend = User.find(params_friendship[:friend_id])
-    # f_friendship = friend.friendships.build(friend_id: current_user.id)
-
     if @friendship.save
-      #  && f_friendship.save
       flash[:notice] = 'Friendship was saved correctly.'
       redirect_back(fallback_location: new_user_friendship_path)
     else
@@ -18,7 +14,6 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-
     friend = User.find(params[:id])
     friendship = friend.friendships.find_by(friend_id: current_user.id)
     if current_user.friend_requests.include?(friend)
@@ -32,7 +27,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friend = User.find(params[:user_id])
+    friend = User.find(params[:id])
     friendship = friend.friendships.find_by(friend_id: current_user.id)
 
     flash[:notice] = if friendship.destroy
