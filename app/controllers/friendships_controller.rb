@@ -19,8 +19,9 @@ class FriendshipsController < ApplicationController
 
   def update
     friend = User.find(params[:user_id])
+    friendship = friend.friendships.find_by(friend_id: current_user.id)
     if current_user.friend_requests.include?(friend)
-      current_user.confirm_friend(friend)
+      friendship.confirm_friend
       flash[:notice] = 'Friendship was confirmed correctly.'
       redirect_back(fallback_location: user_path)
     else
