@@ -2,7 +2,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% if !current_user.friends.include?(user) && current_user.pending_friends.none?(user) && current_user.friend_requests.none?(user) && current_user != user %>
+    <% if !current_user.friends.include?(user) && !current_user.pending_friends.include?(user) && current_user.friend_requests.none?(user) && current_user != user %>
       <%= link_to 'Add as friend', user_friendships_path(current_user, :friendship => {:friend_id => user.id}), method: :post, class: 'profile-link' %>
     <% elsif !current_user.friends.include?(user) && (current_user.pending_friends.include?(user) || current_user.friend_requests.include?(user)) %>
       <p>'Waiting for confirmation.'</p>
