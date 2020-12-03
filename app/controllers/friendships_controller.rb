@@ -18,7 +18,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friend = User.find(params[:user_id])
+
+    friend = User.find(params[:id])
     friendship = friend.friendships.find_by(friend_id: current_user.id)
     if current_user.friend_requests.include?(friend)
       friendship.confirm_friend
