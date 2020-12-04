@@ -1,16 +1,17 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> In this project we built an Social Media application. You can sign up with and email and password and then create posts, add other user as friends, read the post of your friends, coment and give them a like.
 
 ## Built With
 
 - Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails v6
+- Rubocop
+- Rspec for testing
 
 ## Live Demo
 
-TBA
-
+- [Social Media app](https://shrouded-fortress-08159.herokuapp.com/)
 
 ## Getting Started
 
@@ -18,16 +19,27 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- [Rails](http://railsinstaller.org/en)
+- [Postgres](https://www.postgresql.org/download/)
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
+```
+
+Install Yarn with:
+
+```
+Yarn install
+```
+Install npm with:
+
+```
+npm install
 ```
 
 Setup database with:
@@ -36,16 +48,6 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
@@ -60,24 +62,27 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
 
 ## Authors
 
-TBA
+👤 **Ricardo Montenegro**
+
+- Github: [@ricardomonte](https://github.com/ricardomonte)
+- Twitter: [@ramnkco](https://twitter.com/ramnkco)
+- LinkedIn: [Ricardo Montenegro](https://www.linkedin.com/in/ricantomontenegro/)
+
+👤 **Sergio Obolevich**
+
+- Github: [@chubaquelo](https://github.com/chubaquelo)
+- Twitter: [@sergioobolevich](https://twitter.com/SergioObolevich)
+- Linkedin: [sergio-obolevich](https://www.linkedin.com/in/sergio-obolevich/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Feel free to check the issues page.
 
 ## Show your support
 
@@ -85,9 +90,12 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- [Microverse](https://www.microverse.org/).
+
 
 ## 📝 License
 
-TBA
+This project is [MIT licensed](LICENSE).
+
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
