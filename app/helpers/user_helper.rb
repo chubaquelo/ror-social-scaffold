@@ -21,24 +21,22 @@ module UserHelper
     end
   end
 
-  def friendship_status_link(user)
-    if friendship_status_helper(user) == true
-      concat link_to 'Add as friend', user_friendships_path(current_user, friendship: { friend_id: user.id }), method: :post, class: 'profile-link'
-    elsif friendship_status_helper(user) == false
+  def friendship_status_link(friend)
+    if friend_request_status(friend) == false && current_user != friend && !current_user.friends.include?(friend)
+      concat link_to 'Add as friend', user_friendships_path(current_user, friendship: { friend_id: friend.id }),
+                     method: :post, class: 'profile-link'
+    elsif friend_request_status(friend) == true
       concat content_tag(:p, 'Waiting for confirmation.')
-    elsif friendship_status_helper(user).nil? && user != current_user
+    elsif current_user != friend
       concat content_tag(:p, 'You are already friends.')
     end
   end
 
-  def friendship_status_helper(user)
-    if !current_user.friends.include?(user) && !current_user.pending_friends.include?(user) && !current_user.friend_requests.include?(user) && current_user != user
-      return true
+  def friend_request_status(friend)
+    if !current_user.pending_friends.include?(friend) && !friend.pending_friends.include?(current_user)
+      false
+    elsif current_user.pending_friends.include?(friend) || friend.pending_friends.include?(current_user)
+      true
     end
-    if !current_user.friends.include?(user) && (current_user.pending_friends.include?(user) || current_user.friend_requests.include?(user))
-      return false
-    end
-
-    nil
   end
 end
