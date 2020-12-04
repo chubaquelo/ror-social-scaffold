@@ -1,26 +1,20 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-
-  <h4>
-    <% if current_user.friends.none?(@user) && current_user.pending_friends.none?(@user) && current_user != @user %>
-      <%= link_to 'Add as friend', user_friendships_path(current_user, :friendship => {:friend_id => @user.id}), method: :post, class: 'profile-link' %>
-    <% elsif current_user.friends.none?(@user) && current_user.pending_friends.include?(@user) %>
-      <p>'Waiting for confirmation.'</p>
-    <% elsif current_user != @user %>
-      <p>'You are already friends.'</p>
-    <% end %>
-  </h4>
-
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
-
+  <h1><%= "Name: #{@user.name}" %></h1>
+<br>
+<hr>
+<br>
 <section class="friend-requests-section">
   <ul class="users-list">
     <%= render 'received_request' %>
   </ul>
+</section>
+<br>
+<hr>
+<br>
+  <article class="timeline">
+  <h3>Recent posts:</h3>
+    <ul class="posts">
+      <%= render @posts %>
+    </ul>
+  </article>
 </section>

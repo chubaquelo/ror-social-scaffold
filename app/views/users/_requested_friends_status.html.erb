@@ -1,8 +1,2 @@
 <h2>Sent Requests</h2>
-<% @pending_requests.each do |user| %>
-<li class="my-4">
-  <% if !current_user.friend?(user) %>
-    Waiting friend confirmation from <%= user.name %>
-  <% end %>
-</li>
-<% end %>
+<% sent_requests(@pending_requests) %>

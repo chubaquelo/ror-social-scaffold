@@ -14,9 +14,10 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    user = User.find(params[:user_id])
-    if current_user.friend_requests.include?(user)
-      current_user.confirm_friend(user)
+    friend = User.find(params[:id])
+    friendship = friend.friendships.find_by(friend_id: current_user.id)
+    if current_user.friend_requests.include?(friend)
+      friendship.confirm_friend
       flash[:notice] = 'Friendship was confirmed correctly.'
       redirect_back(fallback_location: user_path)
     else
@@ -26,13 +27,13 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:user_id])
-    fsh = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id)
+    friend = User.find(params[:id])
+    friendship = friend.friendships.find_by(friend_id: current_user.id)
 
-    flash[:notice] = if current_user.friend_requests.include?(user) && fsh.delete
+    flash[:notice] = if friendship.destroy
                        'Friendship was rejected.'
                      else
-                       'Friendship request was not modified.'
+                       'Some error happened.'
                      end
     redirect_back(fallback_location: user_path)
   end
